@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop - Salem Bookstore KE</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <!-- ========== HEADER & NAVIGATION ========== -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Salem <span>Bookstore</span></div>
+      <button class="nav-toggle">☰</button>
+      <ul class="nav-menu">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="ministry.html">Ministry</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="visit.html">Visit Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Our Products</h1>
+      <p>Explore our extensive collection of Bibles, Christian books, and inspirational resources</p>
+    </div>
+  </section>
+
+  <!-- ========== SHOP SECTION ========== -->
+  <section style="padding: 2rem;">
+    <div class="container">
+      <div style="margin-bottom: 2rem;">
+        <input type="text" id="search-products" placeholder="Search products..." style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-light); border-radius: 0.5rem; font-size: 1rem;">
+      </div>
+
+      <div class="shop-container">
+        <!-- ========== FILTERS ========== -->
+        <div class="filters">
+          <h3 style="margin-bottom: 1.5rem;">Filter Products</h3>
+
+          <div class="filter-group">
+            <h3>Category</h3>
+            <div class="filter-option">
+              <input type="checkbox" id="bibles" value="bibles">
+              <label for="bibles">Bibles</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="christian-books" value="christian-books">
+              <label for="christian-books">Christian Books</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="devotionals" value="devotionals">
+              <label for="devotionals">Devotionals</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="gifts" value="gifts">
+              <label for="gifts">Gifts & Accessories</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="church-supplies" value="church-supplies">
+              <label for="church-supplies">Church Supplies</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="music-media" value="music-media">
+              <label for="music-media">Music & Media</label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h3>Price Range</h3>
+            <div class="filter-option">
+              <input type="checkbox" id="price-budget" value="price-budget">
+              <label for="price-budget">Under KES 500</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="price-standard" value="price-standard">
+              <label for="price-standard">KES 500 - 2,000</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="price-premium" value="price-premium">
+              <label for="price-premium">KES 2,000+</label>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Clear Filters</button>
+        </div>
+
+        <!-- ========== PRODUCTS GRID ========== -->
+        <div class="shop-products">
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem;">
+            <!-- Bibles Category -->
+            <div class="product-card" data-category="bibles" data-title="Study Bible">
+              <div class="product-icon">📖</div>
+              <h3>Study Bible - Standard</h3>
+              <p>Comprehensive study notes and references</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 2,500</p>
+              <button class="btn btn-primary" onclick="addToCart('bible-1', 'Study Bible - Standard', 2500)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="bibles" data-title="Children's Bible">
+              <div class="product-icon">👶📖</div>
+              <h3>Children's Bible</h3>
+              <p>Illustrated stories for young learners</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 1,200</p>
+              <button class="btn btn-primary" onclick="addToCart('bible-2', 'Children\'s Bible', 1200)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="bibles" data-title="Premium Leather Bible">
+              <div class="product-icon">🔖📖</div>
+              <h3>Premium Leather Bible</h3>
+              <p>Luxury edition with leather binding</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 4,500</p>
+              <button class="btn btn-primary" onclick="addToCart('bible-3', 'Premium Leather Bible', 4500)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="bibles" data-title="Local Language Bible">
+              <div class="product-icon">🌍📖</div>
+              <h3>Local Language Bible</h3>
+              <p>Available in Lango, Kikuyu, Luo, Kamba, and more</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 1,500</p>
+              <button class="btn btn-primary" onclick="addToCart('bible-4', 'Local Language Bible', 1800)">Add to Cart</button>
+            </div>
+
+            <!-- Christian Books -->
+            <div class="product-card" data-category="christian-books" data-title="Daily Disciplines">
+              <div class="product-icon">📚</div>
+              <h3>Daily Disciplines</h3>
+              <p>Guide to spiritual growth and maturity</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 750</p>
+              <button class="btn btn-primary" onclick="addToCart('book-1', 'Daily Disciplines', 750)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="christian-books" data-title="Prayer Warrior's Handbook">
+              <div class="product-icon">🙏📕</div>
+              <h3>Prayer Warrior's Handbook</h3>
+              <p>Comprehensive guide to effective prayer</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 950</p>
+              <button class="btn btn-primary" onclick="addToCart('book-2', 'Prayer Warrior\'s Handbook', 950)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="christian-books" data-title="Faith in the Wilderness">
+              <div class="product-icon">🏜️📙</div>
+              <h3>Faith in the Wilderness</h3>
+              <p>Stories of faith during challenging times</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 1,100</p>
+              <button class="btn btn-primary" onclick="addToCart('book-3', 'Faith in the Wilderness', 1100)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="christian-books" data-title="Walking in Victory">
+              <div class="product-icon">🏆📗</div>
+              <h3>Walking in Victory</h3>
+              <p>Overcoming spiritual battles</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 980</p>
+              <button class="btn btn-primary" onclick="addToCart('book-4', 'Walking in Victory', 980)">Add to Cart</button>
+            </div>
+
+            <!-- Devotionals -->
+            <div class="product-card" data-category="devotionals" data-title="365 Daily Devotions">
+              <div class="product-icon">✨</div>
+              <h3>365 Daily Devotions</h3>
+              <p>Year-long spiritual reflections</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 1,350</p>
+              <button class="btn btn-primary" onclick="addToCart('dev-1', '365 Daily Devotions', 1350)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="devotionals" data-title="Morning Glory">
+              <div class="product-icon">🌅</div>
+              <h3>Morning Glory Devotional</h3>
+              <p>Start your day with God's Word</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 650</p>
+              <button class="btn btn-primary" onclick="addToCart('dev-2', 'Morning Glory Devotional', 650)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="devotionals" data-title="Evening Reflections">
+              <div class="product-icon">🌙</div>
+              <h3>Evening Reflections</h3>
+              <p>End your day in God's presence</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 650</p>
+              <button class="btn btn-primary" onclick="addToCart('dev-3', 'Evening Reflections', 650)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="devotionals" data-title="Bible Study Guide">
+              <div class="product-icon">📝</div>
+              <h3>Bible Study Guide 2026</h3>
+              <p>In-depth study material for the year</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 1,450</p>
+              <button class="btn btn-primary" onclick="addToCart('dev-4', 'Bible Study Guide 2026', 1450)">Add to Cart</button>
+            </div>
+
+            <!-- Gifts & Accessories -->
+            <div class="product-card" data-category="gifts" data-title="Scripture Wall Art">
+              <div class="product-icon">🎨</div>
+              <h3>Scripture Wall Art</h3>
+              <p>Beautiful biblical verses for your home</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 1,200</p>
+              <button class="btn btn-primary" onclick="addToCart('gift-1', 'Scripture Wall Art', 1200)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="gifts" data-title="Christian Gift Set">
+              <div class="product-icon">🎁</div>
+              <h3>Christian Gift Set</h3>
+              <p>Perfect for loved ones and special occasions</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 2,500</p>
+              <button class="btn btn-primary" onclick="addToCart('gift-2', 'Christian Gift Set', 2500)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="gifts" data-title="Bookmark Collection">
+              <div class="product-icon">🔖</div>
+              <h3>Inspirational Bookmarks</h3>
+              <p>Set of 10 with encouraging verses</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 350</p>
+              <button class="btn btn-primary" onclick="addToCart('gift-3', 'Inspirational Bookmarks', 350)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="gifts" data-title="Prayer Journal">
+              <div class="product-icon">📔</div>
+              <h3>Leather Prayer Journal</h3>
+              <p>Guided daily prayer tracking journal</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 1,800</p>
+              <button class="btn btn-primary" onclick="addToCart('gift-4', 'Leather Prayer Journal', 1800)">Add to Cart</button>
+            </div>
+
+            <!-- Church Supplies -->
+            <div class="product-card" data-category="church-supplies" data-title="Hymn Book">
+              <div class="product-icon">🎵</div>
+              <h3>Church Hymn Book</h3>
+              <p>Complete collection of worship hymns</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 450</p>
+              <button class="btn btn-primary" onclick="addToCart('supply-1', 'Church Hymn Book', 450)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="church-supplies" data-title="Sunday School Materials">
+              <div class="product-icon">🏫</div>
+              <h3>Sunday School Kit</h3>
+              <p>Complete materials for annual curriculum</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 3,200</p>
+              <button class="btn btn-primary" onclick="addToCart('supply-2', 'Sunday School Kit', 3200)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="church-supplies" data-title="Offering Envelopes">
+              <div class="product-icon">✉️</div>
+              <h3>Church Offering Envelopes</h3>
+              <p>Box of 100 envelopes</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 280</p>
+              <button class="btn btn-primary" onclick="addToCart('supply-3', 'Church Offering Envelopes', 280)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="church-supplies" data-title="Choir Robes">
+              <div class="product-icon">👔</div>
+              <h3>Choir Robes (per piece)</h3>
+              <p>Professional quality robes</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 2,200</p>
+              <button class="btn btn-primary" onclick="addToCart('supply-4', 'Choir Robes', 2200)">Add to Cart</button>
+            </div>
+
+            <!-- Music & Media -->
+            <div class="product-card" data-category="music-media" data-title="Christian Music Album">
+              <div class="product-icon">🎵</div>
+              <h3>Inspiring Worship Collection</h3>
+              <p>CD with uplifting worship songs</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 350</p>
+              <button class="btn btn-primary" onclick="addToCart('media-1', 'Inspiring Worship Collection', 350)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="music-media" data-title="Bible Audiobook">
+              <div class="product-icon">🎧</div>
+              <h3>Complete Bible Audiobook</h3>
+              <p>Full New Testament with clear narration</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 1,500</p>
+              <button class="btn btn-primary" onclick="addToCart('media-2', 'Complete Bible Audiobook', 1500)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="music-media" data-title="Christian Documentary">
+              <div class="product-icon">📺</div>
+              <h3>Faith Documentary Series</h3>
+              <p>DVD set with inspiring true stories</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 2,000</p>
+              <button class="btn btn-primary" onclick="addToCart('media-3', 'Faith Documentary Series', 2000)">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-category="music-media" data-title="Gospel Music Collection">
+              <div class="product-icon">🎶</div>
+              <h3>Gospel Greats Collection</h3>
+              <p>3-CD set of classic gospel songs</p>
+              <p style="color: var(--accent-gold); font-weight: bold;">KES 980</p>
+              <button class="btn btn-primary" onclick="addToCart('media-4', 'Gospel Greats Collection', 980)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About Us</h3>
+        <p>Salem Bookstore KE is your trusted partner for Christian resources, Bibles, and inspirational materials across Kenya.</p>
+        <div class="social-links">
+          <a href="https://facebook.com/salembooks" target="_blank" title="Facebook">f</a>
+          <a href="https://twitter.com/salembooks" target="_blank" title="Twitter">𝕩</a>
+          <a href="https://instagram.com/salembookstoreke" target="_blank" title="Instagram">📷</a>
+          <a href="whatsapp://send?phone=254746752430" title="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Customer Service</h3>
+        <ul>
+          <li><a href="visit.html">Store Locations</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>📍 226 Manyera CBD, Migori, Kenya</p>
+        <p>📞 +254 746752430</p>
+        <p>📞 +254 750118647</p>
+        <p>📧 salembookshop66@gmail.com</p>
+        <p>⏰ Mon-Sat: 9AM-6PM | Sun: Closed</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Salem Bookstore KE. All rights reserved. Serving Kenya with God's Word since 2017.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
