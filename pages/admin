@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Salem Bookstore KE</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <!-- ========== HEADER & NAVIGATION ========== -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Salem <span>Bookstore</span></div>
+      <button class="nav-toggle">☰</button>
+      <ul class="nav-menu">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="ministry.html">Ministry</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="visit.html">Visit Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="admin.html">Admin</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Admin Panel</h1>
+      <p>Secure access to manage the Salem Bookstore site (local-only admin panel).</p>
+    </div>
+  </section>
+
+  <section style="padding: 3rem 2rem;">
+    <div class="container">
+      <div class="section-title">
+        <h2>Administrator Access</h2>
+      </div>
+
+      <div id="admin-login" style="max-width: 520px; margin: 0 auto;">
+        <p style="margin-bottom: 1rem;">Enter the admin password to access the dashboard. This is a local-only panel and does not connect to a backend.</p>
+        <form id="admin-login-form" style="display: grid; gap: 1rem;">
+          <input id="admin-password" type="password" placeholder="Admin password" required style="padding: 0.75rem; border: 1px solid var(--border-light); border-radius: 0.5rem; font-size: 1rem;">
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <input id="show-password" type="checkbox" style="width: auto;" />
+            <label for="show-password" style="font-size: 0.95rem; color: var(--text-light);">Show password</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Sign In</button>
+        </form>
+      </div>
+
+      <div id="admin-dashboard" style="display: none; margin-top: 2rem;">
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; align-items: center;">
+          <div>
+            <h3>Dashboard</h3>
+            <p>Manage data stored in your browser and quickly access site tools.</p>
+          </div>
+          <button id="admin-logout" class="btn btn-secondary">Logout</button>
+        </div>
+
+        <div style="margin-top: 2rem; display: grid; gap: 1.5rem;">
+          <div style="border: 1px solid var(--border-light); border-radius: 0.75rem; padding: 1.5rem; background: var(--white);">
+            <h4>Local Storage Status</h4>
+            <p id="storage-status" style="margin-bottom: 1rem; color: var(--text-light);"></p>
+            <button id="clear-storage" class="btn btn-outline" style="width: 100%;">Clear Local Data</button>
+          </div>
+
+          <div style="border: 1px solid var(--border-light); border-radius: 0.75rem; padding: 1.5rem; background: var(--white);">
+            <h4>Quick Links</h4>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+              <li><a href="shop.html" class="btn btn-outline" style="display: inline-block; width: 100%; text-align: left;">Open Shop Page</a></li>
+              <li><a href="../index.html" class="btn btn-outline" style="display: inline-block; width: 100%; text-align: left; margin-top: 0.5rem;">Open Home Page</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem; border: 1px solid var(--border-light); border-radius: 0.75rem; padding: 1.5rem; background: var(--white);">
+          <h4>Notes</h4>
+          <p style="margin-bottom: 0.5rem;">This admin panel is a safe, browser-only tool. It does not store or send any data externally.</p>
+          <p style="margin-bottom: 0;">Use <strong>Clear Local Data</strong> to reset any saved values (newsletter subscription, cart, etc.) in this browser.</p>
+        </div>
+
+        <div id="product-manager" style="margin-top: 2rem; border: 1px solid var(--border-light); border-radius: 0.75rem; padding: 1.5rem; background: var(--white);">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+            <div>
+              <h4 style="margin: 0;">Product Catalog (Shop)</h4>
+              <p style="margin: 0.5rem 0 1rem;">Edit the product list shown on the Shop page. Changes are stored in your browser.</p>
+            </div>
+            <button id="add-product" class="btn btn-primary" style="flex-shrink: 0;">Add Product</button>
+          </div>
+
+          <div style="display: grid; gap: 1.25rem;">
+            <form id="product-form" style="display: grid; gap: 0.75rem;">
+              <input type="hidden" id="product-id">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                <input id="product-title" type="text" placeholder="Title" required style="padding: 0.75rem; border: 1px solid var(--border-light); border-radius: 0.5rem;">
+                <input id="product-category" type="text" placeholder="Category (e.g. bibles)" required style="padding: 0.75rem; border: 1px solid var(--border-light); border-radius: 0.5rem;">
+              </div>
+              <textarea id="product-description" placeholder="Description" rows="2" required style="padding: 0.75rem; border: 1px solid var(--border-light); border-radius: 0.5rem;"></textarea>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                <input id="product-price" type="number" min="0" placeholder="Price (KES)" required style="padding: 0.75rem; border: 1px solid var(--border-light); border-radius: 0.5rem;">
+                <input id="product-icon" type="text" placeholder="Icon (emoji)" style="padding: 0.75rem; border: 1px solid var(--border-light); border-radius: 0.5rem;">
+              </div>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <button type="submit" class="btn btn-primary">Save Product</button>
+                <button type="button" id="product-cancel" class="btn btn-secondary">Cancel</button>
+                <button type="button" id="reset-products" class="btn btn-outline" style="margin-left: auto;">Reset To Defaults</button>
+              </div>
+            </form>
+
+            <div>
+              <h5 style="margin-bottom: 0.5rem;">Product List</h5>
+              <div id="product-list" style="display: grid; gap: 0.75rem;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="orders-manager" style="margin-top: 2rem; border: 1px solid var(--border-light); border-radius: 0.75rem; padding: 1.5rem; background: var(--white);">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+            <div>
+              <h4 style="margin: 0;">Orders</h4>
+              <p style="margin: 0.5rem 0 1rem;">Orders placed from the Shop page (stored locally).</p>
+            </div>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button id="refresh-orders" class="btn btn-outline">Refresh</button>
+              <button id="clear-orders" class="btn btn-secondary">Clear Orders</button>
+            </div>
+          </div>
+          <div id="orders-list" style="display: grid; gap: 0.75rem;"></div>
+        </div>
+
+        <div id="messages-manager" style="margin-top: 2rem; border: 1px solid var(--border-light); border-radius: 0.75rem; padding: 1.5rem; background: var(--white);">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+            <div>
+              <h4 style="margin: 0;">Messages</h4>
+              <p style="margin: 0.5rem 0 1rem;">Messages submitted via Contact form or WhatsApp (stored locally).</p>
+            </div>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button id="refresh-messages" class="btn btn-outline">Refresh</button>
+              <button id="clear-messages" class="btn btn-secondary">Clear Messages</button>
+            </div>
+          </div>
+          <div id="messages-list" style="display: grid; gap: 0.75rem;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About Us</h3>
+        <p>Salem Bookstore KE is your trusted partner for Christian resources, Bibles, and inspirational materials across Kenya.</p>
+        <div class="social-links">
+          <a href="https://facebook.com/salembooks" target="_blank" title="Facebook">f</a>
+          <a href="https://twitter.com/salembooks" target="_blank" title="Twitter">𝕩</a>
+          <a href="https://instagram.com/salembooks" target="_blank" title="Instagram">📷</a>
+          <a href="whatsapp://send?phone=254750118647" title="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Customer Service</h3>
+        <ul>
+          <li><a href="visit.html">Store Locations</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>📍 226 Manyera CBD, Migori 40400, Kenya</p>
+        <p>📞 +254 750 118 647</p>
+        <p>📧 salembookshop66@gmail.com</p>
+        <p>⏰ Mon-Sat: 9AM-6PM | Sun: Closed</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Salem Bookstore KE. All rights reserved. Serving Kenya with God's Word since 2017.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    const ADMIN_PASSWORD = 'SalemAdmin2026';
+    const storageKey = 'salemAdminLoggedIn';
+
+    const loginForm = document.getElementById('admin-login-form');
+    const passwordInput = document.getElementById('admin-password');
+    const showPasswordToggle = document.getElementById('show-password');
+    const adminLoginSection = document.getElementById('admin-login');
+    const adminDashboard = document.getElementById('admin-dashboard');
+    const logoutBtn = document.getElementById('admin-logout');
+    const clearStorageBtn = document.getElementById('clear-storage');
+    const storageStatus = document.getElementById('storage-status');
+
+    function updateStorageStatus() {
+      const keys = Object.keys(localStorage);
+      storageStatus.textContent = keys.length
+        ? `Local storage contains ${keys.length} item(s). Remove them to reset saved data.`
+        : 'Local storage is empty.';
+    }
+
+    function setAdminView(loggedIn) {
+      adminLoginSection.style.display = loggedIn ? 'none' : 'block';
+      adminDashboard.style.display = loggedIn ? 'block' : 'none';
+      updateStorageStatus();
+    }
+
+    function isLoggedIn() {
+      return localStorage.getItem(storageKey) === 'true';
+    }
+
+    loginForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const value = passwordInput.value.trim();
+
+      if (value === ADMIN_PASSWORD) {
+        localStorage.setItem(storageKey, 'true');
+        setAdminView(true);
+      } else {
+        alert('Invalid password. Please try again.');
+        passwordInput.value = '';
+      }
+    });
+
+    showPasswordToggle.addEventListener('change', () => {
+      passwordInput.type = showPasswordToggle.checked ? 'text' : 'password';
+    });
+
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem(storageKey);
+      setAdminView(false);
+    });
+
+    clearStorageBtn.addEventListener('click', () => {
+      if (!confirm('This will clear all data stored in your browser (newsletter, cart, etc.). Continue?')) {
+        return;
+      }
+      localStorage.clear();
+      updateStorageStatus();
+      alert('Local storage cleared. You may need to refresh pages for changes to take effect.');
+    });
+
+    // Product management (Shop catalog stored in localStorage)
+    const productForm = document.getElementById('product-form');
+    const productListEl = document.getElementById('product-list');
+    const productIdInput = document.getElementById('product-id');
+    const productTitleInput = document.getElementById('product-title');
+    const productCategoryInput = document.getElementById('product-category');
+    const productDescriptionInput = document.getElementById('product-description');
+    const productPriceInput = document.getElementById('product-price');
+    const productIconInput = document.getElementById('product-icon');
+    const productCancelBtn = document.getElementById('product-cancel');
+    const resetProductsBtn = document.getElementById('reset-products');
+
+    function resetProductForm() {
+      if (!productForm) return;
+      productIdInput.value = '';
+      productTitleInput.value = '';
+      productCategoryInput.value = '';
+      productDescriptionInput.value = '';
+      productPriceInput.value = '';
+      productIconInput.value = '';
+      productForm.querySelector('button[type="submit"]').textContent = 'Save Product';
+    }
+
+    function renderProductList() {
+      if (!productListEl) return;
+      const products = getProducts();
+      if (products.length === 0) {
+        productListEl.innerHTML = '<p style="color: var(--text-light);">No products found.</p>';
+        return;
+      }
+
+      productListEl.innerHTML = '';
+      products.forEach(product => {
+        const item = document.createElement('div');
+        item.style = 'border: 1px solid var(--border-light); border-radius: 0.5rem; padding: 0.75rem; display: flex; justify-content: space-between; align-items: center;';
+
+        const info = document.createElement('div');
+        info.innerHTML = `<strong>${product.title}</strong> <span style="color: var(--text-light);">(${product.category})</span><br><span style="color: var(--text-light);">${formatCurrency(product.price)}</span>`;
+
+        const actions = document.createElement('div');
+        actions.style.display = 'flex';
+        actions.style.gap = '0.5rem';
+
+        const editBtn = document.createElement('button');
+        editBtn.type = 'button';
+        editBtn.className = 'btn btn-outline';
+        editBtn.textContent = 'Edit';
+        editBtn.addEventListener('click', () => {
+          productIdInput.value = product.id;
+          productTitleInput.value = product.title;
+          productCategoryInput.value = product.category;
+          productDescriptionInput.value = product.description;
+          productPriceInput.value = product.price;
+          productIconInput.value = product.icon || '';
+          if (productForm) productForm.querySelector('button[type="submit"]').textContent = 'Update Product';
+          window.scrollTo({ top: productForm.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+        });
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.type = 'button';
+        deleteBtn.className = 'btn btn-secondary';
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.addEventListener('click', () => {
+          if (!confirm('Delete this product?')) return;
+          const updated = getProducts().filter(p => p.id !== product.id);
+          saveProducts(updated);
+          renderProductList();
+          showToast('Product removed from catalog.', 'info');
+        });
+
+        actions.append(editBtn, deleteBtn);
+        item.append(info, actions);
+        productListEl.appendChild(item);
+      });
+    }
+
+    if (productForm) {
+      productForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const id = productIdInput.value || `product-${Date.now()}`;
+        const title = productTitleInput.value.trim();
+        const category = productCategoryInput.value.trim().toLowerCase();
+        const description = productDescriptionInput.value.trim();
+        const price = Number(productPriceInput.value);
+        const icon = productIconInput.value.trim() || '📦';
+
+        if (!title || !category || !description || !price) {
+          alert('Please fill in all required fields.');
+          return;
+        }
+
+        const products = getProducts();
+        const existingIndex = products.findIndex(p => p.id === id);
+        const updatedProduct = { id, title, category, description, price, icon };
+
+        if (existingIndex >= 0) {
+          products[existingIndex] = updatedProduct;
+          showToast('Product updated.', 'success');
+        } else {
+          products.push(updatedProduct);
+          showToast('Product added.', 'success');
+        }
+
+        saveProducts(products);
+        renderProductList();
+        resetProductForm();
+      });
+
+      productCancelBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        resetProductForm();
+      });
+    }
+
+    if (resetProductsBtn) {
+      resetProductsBtn.addEventListener('click', () => {
+        if (!confirm('Reset the product catalog to the default set?')) return;
+        localStorage.removeItem('salemProducts');
+        renderProductList();
+        showToast('Product catalog reset to defaults. Refresh the shop page to see changes.', 'success');
+      });
+    }
+
+    function initializeProductManager() {
+      renderProductList();
+    }
+
+    setAdminView(isLoggedIn());
+    initializeProductManager();
+  </script>
+</body>
+</html>
