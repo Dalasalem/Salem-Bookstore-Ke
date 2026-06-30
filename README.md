@@ -239,9 +239,9 @@ Edit CSS variables in `css/style.css` :root section:
 
 ### Contact Information
 Update in footer and contact pages:
-- Phone: +254 712 345 678
-- Email: info@salembookstore.ke
-- Address: 123 Bible Street, Nairobi
+- Phone: +254750118647
+- Email: salembookshop66@gmail.com
+- Address:226 Manyera, Migori_Kenya
 
 ### Store Hours
 Modify in all footer sections and visit.html
