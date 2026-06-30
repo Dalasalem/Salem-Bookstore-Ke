@@ -132,7 +132,7 @@ salem-bookstore/
 - Special pricing for churches and ministries
 
 ### Integration Points
-- **WhatsApp Integration** - Direct messaging links (254712345678)
+- **WhatsApp Integration** - Direct messaging links (254750118647)
 - **Google Maps** - Embedded location maps
 - **Payment Methods** - M-Pesa, credit cards, direct transfer ready
 - **Newsletter** - Email subscription capability
